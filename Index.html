@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indonesian Tourism</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Indonesian Tourism</h1>
+        <nav>
+            <ul>
+                <li><a href="Culture.html">Kebudayaan Indonesia</a></li>
+                <li><a href="TouristSpots.html">Tempat Wisata Terbaik</a></li>
+                <li><a href="Hotel.html">Daftar Hotel Favorit</a></li>
+                <li><a href="#" onclick="openBookingForm()">Transaksi</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Selamat Datang di Indonesian Tourism</h2>
+        <p>Temukan informasi lengkap tentang kebudayaan, tempat wisata, dan akomodasi di Indonesia.</p>
+    </main>
+
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBookingForm()">&times;</span>
+            <h2>Formulir Transaksi</h2>
+            <form id="bookingForm">
+                <label for="nama">Nama:</label><br>
+                <input type="text" id="nama" name="nama" required><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br>
+                <label for="tanggal">Tanggal Kunjungan:</label><br>
+                <input type="date" id="tanggal" name="tanggal" required><br>
+                <button type="submit">Kirim</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    function openBookingForm() {
+        document.getElementById('bookingModal').style.display = 'block';
+    }
+
+    function closeBookingForm() {
+        document.getElementById('bookingModal').style.display = 'none';
+    }
+
+    document.getElementById('bookingForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        let formData = new FormData(this);
+        let formDataJSON = {};
+        formData.forEach((value, key) => {
+            formDataJSON[key] = value;
+        });
+        console.log(formDataJSON); // bisa diubah untuk memproses data sesuai kebutuhan
+        closeBookingForm();
+    });
+</script>
